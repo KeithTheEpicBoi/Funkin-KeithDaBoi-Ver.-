@@ -1,0 +1,32 @@
+import flixel.FlxG;
+import funkin.play.character.MultiSparrowCharacter;
+import funkin.play.character.CharacterType;
+import funkin.play.character.BaseCharacter;
+import funkin.play.PlayState;
+import StringTools;
+import funkin.Preferences;
+import funkin.audio.FunkinSound;
+import funkin.play.GameOverSubState;
+
+class BoyfriendNonsenseCharacter extends MultiSparrowCharacter {
+	var opName:String = "";
+	var interuptResponse:FunkinSound = null;
+
+	function new() {
+		super('bf');
+	}
+
+	override function playAnimation(name:String, restart:Bool, ignoreOther:Bool):Void
+	{
+		super.playAnimation(name, restart, ignoreOther);
+		//trace("Playing animation: " + name + ", restart: " + restart + ", ignoreOther: " + ignoreOther);
+	}
+
+	override function getDeathQuote():Null<String> {
+		opName = PlayState.instance.currentStage.getDad().characterId;
+
+		if (StringTools.contains(opName, "dad")) {
+			return Paths.sound('deathQuotesNeo/Gameover-' + FlxG.random.int(1, 13));
+		}
+	}
+}

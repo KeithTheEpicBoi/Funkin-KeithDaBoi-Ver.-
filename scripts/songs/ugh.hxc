@@ -5,21 +5,25 @@ import funkin.play.cutscene.VideoCutscene;
 
 import funkin.play.PlayStatePlaylist;
 
-class UghSong extends Song {
+class UghSong extends Song
+{
   var hasPlayedCutscene:Bool;
 
-	public function new() {
+	public function new()
+  {
 		super('ugh');
 
     hasPlayedCutscene = false;
 	}
 
-  public override function onCountdownStart(event:CountdownScriptEvent):Void {
+  public override function onCountdownStart(event:CountdownScriptEvent):Void
+  {
 		super.onCountdownStart(event);
 
     if (!PlayStatePlaylist.isStoryMode) hasPlayedCutscene = true;
 
-    if (!hasPlayedCutscene) {
+    if (!hasPlayedCutscene)
+    {
       trace('Pausing countdown to play a video cutscene (`ugh`)');
 
       hasPlayedCutscene = true;
@@ -30,7 +34,8 @@ class UghSong extends Song {
     }
 	}
 
-  function startVideo() {
+  function startVideo()
+  {
     VideoCutscene.play(Paths.videos('ughCutscene'));
   }
 
