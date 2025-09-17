@@ -4,29 +4,21 @@ import funkin.play.character.CharacterType;
 import funkin.play.character.BaseCharacter;
 import funkin.play.PlayState;
 import StringTools;
-import funkin.Preferences;
 import funkin.audio.FunkinSound;
 import funkin.play.GameOverSubState;
 
-class BoyfriendNonsenseCharacter extends MultiSparrowCharacter {
-	var opName:String = "";
-	var interuptResponse:FunkinSound = null;
+class Boyfriend extends MultiSparrowCharacter {
+	var opponentName:String = "";
 
 	function new() {
 		super('bf');
 	}
 
-	override function playAnimation(name:String, restart:Bool, ignoreOther:Bool):Void
-	{
-		super.playAnimation(name, restart, ignoreOther);
-		//trace("Playing animation: " + name + ", restart: " + restart + ", ignoreOther: " + ignoreOther);
-	}
+	override function getDeathQuote():Null<String> { // Plays a set of random death quote from a specific character
+		opponentName = PlayState.instance.currentStage.getDad().characterId;
 
-	override function getDeathQuote():Null<String> {
-		opName = PlayState.instance.currentStage.getDad().characterId;
-
-		if (StringTools.contains(opName, "dad")) {
-			return Paths.sound('deathQuotesNeo/Gameover-' + FlxG.random.int(1, 13));
+		if (StringTools.contains(opponentName, "dad")) { // If the opponent is Neo...
+			return Paths.sound('deathQuotesNeo/Gameover-' + FlxG.random.int(1, 13)); // Play a random Neo death quote
 		}
 	}
 }
