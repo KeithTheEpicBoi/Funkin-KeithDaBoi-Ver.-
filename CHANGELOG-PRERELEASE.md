@@ -1,3 +1,9 @@
+## [dev-1.1b] - 09-17-2025
+
+### Fixed
+
+- **Infernus** should no longer crash the game anymore.
+
 ## [dev-1.1] - 09-17-2025
 
 ### Added
@@ -10,10 +16,6 @@
 ### Changed
 
 - Changed the Story Mode color of Lucy's Week to dark blue.
-
-### Fixed
-
-- text
 
 ## [dev-1.0] - 09-14-2025
 
